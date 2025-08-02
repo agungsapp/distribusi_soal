@@ -26,6 +26,10 @@ class PeminatanSeeder extends Seeder
                 'prodi_id' => 1,
                 'nama' => 'Mobile Programming'
             ],
+            [
+                'prodi_id' => 1,
+                'nama' => 'Multimedia'
+            ],
         ];
 
         foreach ($items as $item) {

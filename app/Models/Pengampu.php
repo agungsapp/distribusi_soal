@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pengampu extends Model
 {
     //
-    protected $fillable = ['mata_kuliah_id', 'dosen_id', 'periode'];
+    protected $fillable = ['mata_kuliah_id', 'dosen_id', 'periode_id'];
 
     public function mataKuliah(): BelongsTo
     {
@@ -21,5 +22,9 @@ class Pengampu extends Model
     public function periode(): BelongsTo
     {
         return $this->belongsTo(Periode::class, 'periode_id');
+    }
+    public function soals(): HasMany
+    {
+        return $this->hasMany(Soal::class, 'pengampu_id');
     }
 }

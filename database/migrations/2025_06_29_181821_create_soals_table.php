@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pengampu_id')->constrained('pengampus');
             $table->foreignId('dosen_id')->constrained('users');
+            $table->string('path');
+            $table->enum('status', ['draft', 'publish']);
             $table->timestamps();
         });
     }
