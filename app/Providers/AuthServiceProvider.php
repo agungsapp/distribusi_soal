@@ -13,22 +13,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Gate untuk create data master
+        Gate::define('access-master', function ($user) {
+            return in_array($user->role, ['admin']);
+        });
         Gate::define('create-data', function ($user) {
             return in_array($user->role, ['admin', 'dosen']);
         });
-
-        // Gate untuk read data master
         Gate::define('read-data', function ($user) {
             return in_array($user->role, ['admin', 'dosen']);
         });
-
-        // Gate untuk update data master
         Gate::define('update-data', function ($user) {
             return in_array($user->role, ['admin', 'dosen']);
         });
-
-        // Gate untuk delete data master
         Gate::define('delete-data', function ($user) {
             return $user->role === 'admin' && !in_array($user->jabatan, ['dosen', 'plpp']);
         });
