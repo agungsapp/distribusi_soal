@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 #[Layout('layouts.auth')]
 class LoginPage extends Component
@@ -25,12 +26,18 @@ class LoginPage extends Component
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $user = Auth::user();
 
-            // Redirect berdasarkan role
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
-            } elseif ($user->role === 'dosen') {
-                return redirect()->route('dosen.dashboard');
+            if (!$user->is_active) {
+                // Logout pengguna
+                Auth::logout();
+                // Hapus sesi
+                Session::flush();
+                // Flash pesan error
+                session()->flash('error', 'Akun anda belum aktif silahkan hubungi admin.');
+                // Arahkan ke halaman login
+                return redirect()->back();
             }
+
+            return redirect()->route('admin.dashboard');
 
             session()->flash('message', 'Login berhasil.');
         } else {

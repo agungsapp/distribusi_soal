@@ -21,17 +21,20 @@ class DatabaseSeeder extends Seeder
             'name' => 'administrator',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'is_active' => true
         ]);
         User::factory()->create([
             'name' => 'dosen pertama',
             'email' => 'dosen1@gmail.com',
             'password' => Hash::make('admin123'),
+            'is_active' => true
         ]);
         User::factory()->create([
             'name' => 'dosen kedua',
             'email' => 'dosen2@gmail.com',
             'password' => Hash::make('admin123'),
+            // 'is_active' => true
         ]);
 
         Prodi::create([

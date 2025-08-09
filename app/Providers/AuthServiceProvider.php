@@ -19,6 +19,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-data', function ($user) {
             return in_array($user->role, ['admin', 'dosen']);
         });
+        Gate::define('create-soal', function ($user) {
+            return in_array($user->role, ['dosen']);
+        });
         Gate::define('read-data', function ($user) {
             return in_array($user->role, ['admin', 'dosen']);
         });

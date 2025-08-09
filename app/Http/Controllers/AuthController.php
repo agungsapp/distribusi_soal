@@ -10,6 +10,7 @@ class AuthController extends Controller
 {
     public function logout(Request $request)
     {
+        // dd("poke");
         Auth::logout();
         Session::flush();
         session()->flash('success', 'Anda telah logout.');
