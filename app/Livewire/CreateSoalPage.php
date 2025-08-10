@@ -99,7 +99,7 @@ class CreateSoalPage extends Component
         } else {
             // Dosen only sees mata kuliah they teach
             $this->mata_kuliahs = MataKuliah::with('peminatan')
-                ->whereHas('pengampus', function ($query) {
+                ->whereHas('pengampu', function ($query) {
                     $query->where('dosen_id', $this->user->id);
                 })
                 ->orderBy('nama')
