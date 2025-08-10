@@ -102,21 +102,7 @@
 												</div>
 
 
-												<div>
-														<div>
-																</label>
-																<select wire:model.live="dosen_id" id="dosen_id"
-																		class="form-control @error('dosen_id') is-invalid @enderror">
-																		<option value="">-- Pilih Dosen --</option>
-																		@foreach ($dosens as $dosen)
-																				<option value="{{ $dosen->id }}">{{ $dosen->name }}</option>
-																		@endforeach
-																</select>
-																@error('dosen_id')
-																		<div class="invalid-feedback">{{ $message }}</div>
-																@enderror
-														</div>
-												</div>
+
 
 												<div class="row">
 														<!-- Periode -->
