@@ -104,6 +104,8 @@ class CreateSoalPage extends Component
                 })
                 ->orderBy('nama')
                 ->get();
+
+            // dd($this->mata_kuliahs);
         }
 
         $this->periodes = Periode::orderBy('tahun_ajaran', 'desc')->get();
